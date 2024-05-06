@@ -48,3 +48,9 @@ const questions = [{
     message: 'Choose a font color (color name or hexadecimal)',
     name: 'fontColor'
 }]
+
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => {
+        err ? console.error(err) : console.log('Generated logo.svg')
+    })
+}
