@@ -25,3 +25,26 @@ class Svg {
         }
     }
 }
+
+
+const questions = [{
+    type: 'input',
+    message: 'Text (Max of 3 characters',
+    name: 'text'
+},
+{
+    type: 'list',
+    message: 'Choose a shape',
+    choices: ['circle', 'triangle', 'square'],
+    name: 'shape'
+},
+{
+    type: 'input',
+    message: 'Choose a background color (color name or hexadecimal)',
+    name: 'bgColor'
+},
+{
+    type: 'input',
+    message: 'Choose a font color (color name or hexadecimal)',
+    name: 'fontColor'
+}]
