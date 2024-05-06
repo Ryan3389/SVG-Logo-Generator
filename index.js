@@ -54,3 +54,16 @@ function writeToFile(fileName, data) {
         err ? console.error(err) : console.log('Generated logo.svg')
     })
 }
+
+async function init() {
+    await inquirer.prompt(questions).then((response) => {
+        const logoSvg = new Svg(response.text, response.shape, response.bgColor, response.fontColor)
+        if (response.text.length > 3 || response.text.length === 0) {
+            console.log('Invalid entry, please enter 1 to 3 characters')
+            return
+        }
+        writeToFile('logo.svg', logoSvg.renderShape())
+    })
+}
+
+init()
