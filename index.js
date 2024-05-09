@@ -1,7 +1,9 @@
+//Importing inquirer, file system, and the Circle, Square, Triangle, and Shape constructors
 const inquirer = require('inquirer')
 const fs = require('fs')
 const { Circle, Square, Triangle, Shape } = require('./lib/shapes')
 
+//Setting up the base values for the svg file
 class Svg {
     constructor(text, shape, bgColor, fontColor) {
 
@@ -10,6 +12,7 @@ class Svg {
             this.bgColor = bgColor,
             this.fontColor = fontColor
     }
+    //This renders the correct shape based on the user input
     renderShape() {
         let currentShape;
         if (this.shape === 'circle') {
@@ -26,7 +29,7 @@ class Svg {
     }
 }
 
-
+//This is the array of questions that will be called using inquirer inside the init() function
 const questions = [{
     type: 'input',
     message: 'Text (Max of 3 characters',
@@ -49,12 +52,15 @@ const questions = [{
     name: 'fontColor'
 }]
 
+
+//Responsible for creating the svg file, will be called inside the init() function
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => {
         err ? console.error(err) : console.log('Generated logo.svg')
     })
 }
 
+//Once this function is called, the questions will render in the terminal, once the answers are submitted, each variable (ex: response.text) will hold the value of the answer in the response
 async function init() {
     await inquirer.prompt(questions).then((response) => {
         const logoSvg = new Svg(response.text, response.shape, response.bgColor, response.fontColor)
@@ -62,6 +68,7 @@ async function init() {
             console.log('Invalid entry, please enter 1 to 3 characters')
             return
         }
+        //Calls the write file function
         writeToFile('logo.svg', logoSvg.renderShape())
     })
 }
