@@ -16,3 +16,7 @@ Install Inquirer by running the following command in the terminal: npm install i
 [logo example](/examples/logo-example.png)
 [Terminal prompts and tests](/examples/terminal-img.png)
 [Svg file](/examples/svg-code.png)
+
+## Video
+Video walkthrough URL: https://drive.google.com/file/d/1vOkh3gN9igjJ6zqYE3PNb7brN9QkXKkH/view?pli=1
+
